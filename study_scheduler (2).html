@@ -7,14 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   NON_FUNCTIONAL_REQUIREMENTS:
-   - UI renders within 100ms on modern hardware
-   - Schedule computation < 1000ms for 50 tasks (verified via perf timer)
-   - localStorage read/write < 10ms
-   - All interactions feel instantaneous (no spinners needed)
-   - Compatible with Chrome, Firefox, Safari (ES2020+)
-   ============================================================ */
 
 :root {
   --bg:       #0f1117;
@@ -44,7 +36,6 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
-/* ── Sidebar ── */
 #sidebar{
   width:var(--sidebar);flex-shrink:0;background:var(--surface);
   border-right:1px solid var(--border);display:flex;flex-direction:column;
@@ -54,13 +45,11 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 #sidebar-header h1{font-size:1.05rem;font-weight:600;color:var(--text);letter-spacing:-.01em}
 #sidebar-header p{font-size:.72rem;color:var(--muted);margin-top:3px}
 
-/* ── Main ── */
 #main{flex:1;display:flex;flex-direction:column;min-height:100vh;overflow-x:hidden}
 #topbar{display:flex;align-items:center;gap:10px;padding:14px 24px;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:10}
 #topbar h2{font-size:1rem;font-weight:600;flex:1}
 #content{padding:24px;flex:1}
 
-/* ── Tabs ── */
 .tab-btn{
   padding:7px 16px;font-size:.82rem;font-weight:500;border-radius:var(--r2);
   border:1px solid var(--border);background:transparent;color:var(--muted);
@@ -68,7 +57,6 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 }
 .tab-btn.active,.tab-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 
-/* ── Forms ── */
 .form-section{padding:16px;border-bottom:1px solid var(--border)}
 .form-section h3{font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
 .field{margin-bottom:10px}
@@ -84,7 +72,6 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .field .range-row span{font-size:.8rem;color:var(--accent);font-weight:600;min-width:32px;text-align:right;font-family:'JetBrains Mono',monospace}
 .err{font-size:.72rem;color:var(--danger);margin-top:3px}
 
-/* ── Buttons ── */
 .btn{
   padding:8px 16px;border-radius:var(--r2);border:none;cursor:pointer;
   font-size:.82rem;font-weight:500;font-family:inherit;transition:all .15s;
@@ -101,11 +88,9 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .btn-sm{padding:5px 10px;font-size:.75rem}
 .btn-full{width:100%;justify-content:center}
 
-/* ── Cards ── */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:12px}
 .card-sm{padding:12px}
 
-/* ── Task list ── */
 .task-card{
   background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
   padding:14px 16px;margin-bottom:10px;transition:border-color .15s
@@ -130,14 +115,12 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .badge-scheduled{background:#1e3a5f;color:var(--info)}
 .task-actions{display:flex;gap:6px;margin-top:10px}
 
-/* ── Score display ── */
 .score-chip{
   font-family:'JetBrains Mono',monospace;font-size:.7rem;
   background:var(--surface3);border:1px solid var(--border);
   border-radius:var(--r2);padding:2px 7px;color:var(--accent)
 }
 
-/* ── Schedule view ── */
 .day-card{
   background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
   margin-bottom:10px;overflow:hidden
@@ -164,7 +147,6 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .alloc-bar-wrap{width:80px;background:var(--surface3);border-radius:99px;height:4px;overflow:hidden}
 .alloc-bar{height:100%;background:var(--accent2);border-radius:99px}
 
-/* ── Algorithm selector ── */
 .algo-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
 .algo-pill{
   padding:5px 14px;border-radius:99px;border:1px solid var(--border);
@@ -173,7 +155,6 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 }
 .algo-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 
-/* ── Metrics ── */
 .metrics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
 .metric-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r2);padding:10px 12px}
 .metric-val{font-size:1.4rem;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--accent)}
@@ -181,7 +162,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .metric-pass{color:var(--success)}
 .metric-fail{color:var(--danger)}
 
-/* ── Comparison table ── */
+
 .compare-table{width:100%;border-collapse:collapse;font-size:.78rem}
 .compare-table th{
   text-align:left;padding:8px 10px;background:var(--surface2);
@@ -193,7 +174,6 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .compare-table tr:hover td{background:var(--surface2)}
 .best{color:var(--success);font-weight:600}
 
-/* ── Objectives panel ── */
 .obj-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
 .obj-row:last-child{border-bottom:none}
 .obj-indicator{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -202,13 +182,11 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .obj-text{flex:1;font-size:.8rem}
 .obj-value{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted)}
 
-/* ── Validation panel ── */
 .valid-item{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:var(--r2);margin-bottom:6px;font-size:.78rem}
 .valid-warn{background:#fbbf2415;border:1px solid #fbbf2440;color:var(--warning)}
 .valid-err{background:#f8717115;border:1px solid #f8717140;color:var(--danger)}
 .valid-ok{background:#34d39915;border:1px solid #34d39940;color:var(--success)}
 
-/* ── Filters bar ── */
 .filters-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
 .filters-bar select,.filters-bar input{
   padding:6px 10px;background:var(--surface);border:1px solid var(--border);
@@ -216,11 +194,9 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 }
 .filters-bar select:focus,.filters-bar input:focus{border-color:var(--accent);outline:none}
 
-/* ── Section header ── */
 .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .section-head h3{font-size:.92rem;font-weight:600}
 
-/* ── Toggle ── */
 .toggle{position:relative;display:inline-block;width:36px;height:20px}
 .toggle input{opacity:0;width:0;height:0}
 .toggle-slider{
@@ -234,12 +210,12 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .toggle input:checked+.toggle-slider{background:var(--accent);border-color:var(--accent)}
 .toggle input:checked+.toggle-slider::before{transform:translateX(16px);background:#fff}
 
-/* ── Empty state ── */
+
 .empty{text-align:center;padding:48px 20px;color:var(--muted)}
 .empty-icon{font-size:2.5rem;margin-bottom:12px;opacity:.4}
 .empty p{font-size:.85rem}
 
-/* ── Report modal ── */
+
 #report-modal{
   display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;
   align-items:center;justify-content:center
@@ -256,7 +232,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 
 .tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
 
-/* ── Mobile sidebar toggle button (hidden on desktop) ── */
+
 #btn-mobile-menu{
   display:none;background:transparent;border:1px solid var(--border);
   color:var(--text);border-radius:var(--r2);padding:6px 10px;
@@ -267,25 +243,13 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
   font-size:1.2rem;cursor:pointer;padding:4px 8px;margin-left:auto
 }
 
-/* ── Mobile overlay backdrop ── */
+
 #sidebar-backdrop{
   display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);
   z-index:49
 }
 
-/* ════════════════════════════════════════════════════════
-   MOBILE RESPONSIVE — max-width: 640px
-   Changes:
-   1. Body stacks vertically; sidebar becomes off-canvas drawer
-   2. Sidebar slides in over content via transform
-   3. Metrics 4-col → 2-col (already 2-col, ensured here)
-   4. Task action buttons wrap instead of overflow
-   5. Reduced padding/margins throughout
-   6. Schedule day cards stack and compress properly
-   7. Report modal full-width (90% width, auto margin)
-   8. Topbar and filters adapt to narrow viewport
-   9. Compare section buttons stack vertically
-   ════════════════════════════════════════════════════════ */
+
 @media(max-width:640px){
 
   /* 1 — Layout: body becomes block, no side-by-side flex */
@@ -301,83 +265,64 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
   #sidebar-backdrop.visible{display:block}
   #sidebar-close{display:block}
 
-  /* Main takes full width */
   #main{min-height:100vh}
 
-  /* Show hamburger in topbar */
   #btn-mobile-menu{display:inline-flex;align-items:center;gap:5px}
 
-  /* 5 — Topbar: tighter padding, smaller title */
   #topbar{padding:10px 14px;gap:6px;flex-wrap:wrap}
   #topbar h2{font-size:.88rem;min-width:0;flex:1}
   .tab-btn{padding:5px 10px;font-size:.75rem}
 
-  /* 5 — Content: reduced padding */
   #content{padding:14px}
 
-  /* 3 — Metrics: always 2 columns on mobile */
   .metrics-grid{grid-template-columns:repeat(2,1fr);gap:8px}
   .metric-val{font-size:1.15rem}
 
-  /* 4 — Task action buttons: wrap instead of overflow */
   .task-actions{flex-wrap:wrap;gap:6px}
   .task-actions .btn{flex:1 1 auto;justify-content:center;min-width:72px}
 
-  /* Task card: tighter padding */
   .task-card{padding:12px 12px}
   .task-header{flex-wrap:wrap;gap:6px}
   .score-chip{font-size:.65rem}
 
-  /* Filters: stack vertically on very small screens */
   .filters-bar{flex-direction:column;align-items:stretch;gap:6px}
   .filters-bar input{width:100%}
   .filters-bar select{width:100%}
   .filters-bar .btn{width:100%;justify-content:center}
 
-  /* 6 — Schedule day cards: compress header row */
   .day-header{padding:10px 12px;gap:8px}
   .day-date{font-size:.78rem;min-width:90px}
   .day-bar-wrap{flex:1;min-width:0}
   .day-hours{min-width:44px;font-size:.7rem}
   .day-body{padding:8px 12px}
 
-  /* Alloc rows: shrink inner bar to save space */
   .alloc-bar-wrap{width:48px}
   .alloc-name{font-size:.78rem}
 
-  /* Algorithm pills: wrap naturally (already flex-wrap, ensure smaller text) */
   .algo-pill{padding:4px 10px;font-size:.73rem}
 
-  /* Section headers: stack on mobile */
   .section-head{flex-direction:column;align-items:flex-start;gap:8px}
   .section-head>div:last-child{display:flex;flex-wrap:wrap;gap:6px;width:100%}
   .section-head .btn{flex:1;justify-content:center}
 
-  /* Compare: buttons row wraps */
   #view-compare .section-head>div{flex-wrap:wrap}
 
-  /* Compare table: allow horizontal scroll (already in overflow-x:auto wrapper) */
   .compare-table{font-size:.7rem}
   .compare-table th,.compare-table td{padding:6px 7px}
 
-  /* Objectives panel */
   .obj-text{font-size:.73rem}
   .obj-value{font-size:.68rem}
 
-  /* Card padding reduced */
   .card{padding:12px}
 
-  /* 7 — Report modal: 90% wide, centered */
   #report-box{width:90%;margin:auto;max-height:88vh}
   #report-content{font-size:.68rem;padding:14px}
   #report-box header{padding:12px 14px}
   #report-box footer{padding:10px 14px;flex-wrap:wrap}
   #report-box footer .btn{flex:1;justify-content:center}
 
-  /* Form section: tighter */
   .form-section{padding:12px}
 
-  /* Validation items */
   .valid-item{font-size:.73rem;padding:6px 8px}
 
   /* Empty state */
@@ -387,9 +332,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════
-     SIDEBAR
-═══════════════════════════════════════════════════════ -->
+
 <aside id="sidebar">
   <div id="sidebar-header">
     <h1>📚 Study Scheduler</h1>
@@ -397,7 +340,6 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
     <button id="sidebar-close" aria-label="Close menu" onclick="closeSidebar()">✕</button>
   </div>
 
-  <!-- Task Form -->
   <div class="form-section">
     <h3 id="form-title">Add Task</h3>
     <div class="field">
@@ -436,7 +378,6 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
     <input type="hidden" id="f-edit-id">
   </div>
 
-  <!-- Settings -->
   <div class="form-section">
     <h3>Settings</h3>
     <div class="field">
@@ -472,16 +413,13 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
     </button>
   </div>
 
-  <!-- Validation -->
   <div class="form-section" id="validation-panel">
     <h3>Validation</h3>
     <div id="validation-output"></div>
   </div>
 </aside>
 
-<!-- ═══════════════════════════════════════════════════════
-     MAIN
-═══════════════════════════════════════════════════════ -->
+
 <div id="sidebar-backdrop" onclick="closeSidebar()"></div>
 
 <main id="main">
@@ -495,7 +433,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 
   <div id="content">
 
-    <!-- ─── TASKS VIEW ─── -->
+   
     <div id="view-tasks">
       <div class="filters-bar">
         <input type="text" id="filter-search" placeholder="Search tasks…" style="flex:1;min-width:120px">
@@ -516,7 +454,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
       <div id="task-list"></div>
     </div>
 
-    <!-- ─── SCHEDULE VIEW ─── -->
+    
     <div id="view-schedule" style="display:none">
       <div class="section-head">
         <div>
@@ -526,7 +464,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
         <button class="btn btn-primary btn-sm" id="btn-run-schedule">▶ Run Schedule</button>
       </div>
 
-      <!-- Schedule status indicator -->
+  
       <div id="schedule-status" style="margin-bottom:12px;font-size:.82rem;min-height:1.2em;"></div>
 
       <!-- Algorithm picker -->
@@ -537,20 +475,20 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
         <button class="algo-pill" data-algo="random">Baseline Random</button>
       </div>
 
-      <!-- Metrics -->
+      
       <div class="metrics-grid" id="schedule-metrics"></div>
 
-      <!-- Objective pass/fail -->
+   
       <div class="card card-sm" style="margin-bottom:16px">
         <div style="font-size:.78rem;font-weight:600;margin-bottom:8px;color:var(--muted)">MEASURABLE OBJECTIVES</div>
         <div id="objectives-panel"></div>
       </div>
 
-      <!-- Day cards -->
+      
       <div id="schedule-days"></div>
     </div>
 
-    <!-- ─── COMPARE VIEW ─── -->
+   
     <div id="view-compare" style="display:none">
       <div class="section-head">
         <h3>Algorithm Comparison</h3>
@@ -607,55 +545,11 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 </div>
 
 <script>
-/* ============================================================
-   DESIGN_JUSTIFICATION:
-   
-   1. URGENCY SCORE = (priority*2 + difficulty) / (days_until_deadline + 1)
-      - Priority doubled because time-sensitivity outweighs difficulty
-      - Difficulty included because harder tasks need earlier scheduling
-        (cognitive load increases under time pressure)
-      - +1 prevents division-by-zero and smooths overdue tasks
-      - This is a weighted ratio: tasks due tomorrow with high priority
-        score extremely high, ensuring they are always scheduled first
-      
-   2. GREEDY ALGORITHM chosen as primary because:
-      - O(n log n) sort + O(n*d) allocation where d = days window
-      - Deterministic and reproducible (no randomness)
-      - Provably schedules high-urgency tasks earliest
-      - Simple enough to explain in a BSc dissertation
-      
-   3. SWAP-BASED HEURISTIC for secondary optimization:
-      - Greedy can create load imbalance (e.g. 12h Monday, 2h Tuesday)
-      - Swap heuristic iteratively finds pairs of allocations across days
-        and swaps them if the result reduces std dev of daily hours
-      - k=500 iterations chosen: empirically balances quality vs speed
-      - DESIGN_JUSTIFICATION: std dev target <2.0h chosen because
-        human study patterns show >2h variance causes burnout risk
-        (based on cognitive load theory literature)
-        
-   4. STD DEV as primary metric:
-      - More meaningful than "average hours" for workload balance
-      - A schedule with 0h, 8h, 0h, 8h is bad even if avg=4h
-      - Std dev captures spread, incentivizing even distribution
-      
-   TESTING_STRATEGY:
-   - 8 sample tasks cover: normal, overdue, oversized (>daily cap),
-     high priority urgent, and low priority distant scenarios
-   - Validation suite tests: overload detection, past deadline, 
-     capacity exceedance, and empty schedule edge cases
-   - All four algorithms tested with identical task sets for fairness
-   
-   NON_FUNCTIONAL_REQUIREMENTS:
-   - Schedule computation for 50 tasks < 1000ms (enforced via timer)
-   - localStorage persistence on every mutation
-   - Handles 0 tasks gracefully (empty state)
-   - Handles 1 task (boundary condition)
-   - Random algorithm: seeded PRNG for reproducible tests
-   ============================================================ */
+
 
 'use strict';
 
-// ─── State ───────────────────────────────────────────────────────────────────
+
 
 const STATE = {
   tasks: [],
@@ -668,12 +562,12 @@ const STATE = {
   scheduleTaskVersion: 0,
 };
 
-// ─── Utilities ────────────────────────────────────────────────────────────────
+
 
 const $ = id => document.getElementById(id);
 const $$ = sel => document.querySelectorAll(sel);
 
-/** Seeded pseudo-random (xorshift32) for reproducible "random" algorithm tests */
+
 function makeRNG(seed=42) {
   let s = seed >>> 0;
   return () => {
@@ -689,11 +583,7 @@ function daysUntil(deadlineISO) {
   return (new Date(deadlineISO) - now) / 86400000;
 }
 
-/**
- * DESIGN_JUSTIFICATION: Urgency score formula
- * score = (priority*2 + difficulty) / (days_until_deadline + 1)
- * Range: ~0.33 (low priority, far deadline) to ~30 (critical, due today)
- */
+
 function urgencyScore(task) {
   const d = Math.max(daysUntil(task.deadline), 0);
   return (task.priority * 2 + task.difficulty) / (d + 1);
@@ -711,7 +601,6 @@ function priorityBadgeClass(p) {
   return ['','badge-p1','badge-p2','badge-p3','badge-p4','badge-p5'][p] || 'badge-p3';
 }
 
-/** Shallow shuffle using Fisher-Yates with provided rng */
 function shuffle(arr, rng) {
   const a = [...arr];
   for (let i = a.length-1; i > 0; i--) {
@@ -721,7 +610,6 @@ function shuffle(arr, rng) {
   return a;
 }
 
-// ─── Persistence ──────────────────────────────────────────────────────────────
 
 function save() {
   localStorage.setItem('sched_tasks', JSON.stringify(STATE.tasks));
@@ -736,16 +624,9 @@ function load() {
   } catch {}
 }
 
-// ─── Validation Suite ─────────────────────────────────────────────────────────
 
-/**
- * TESTING_STRATEGY: Validation detects:
- * 1. Tasks with deadlines in the past
- * 2. Tasks whose hours exceed total available capacity before deadline
- * 3. Single tasks larger than one day's capacity (will be split)
- * 4. Empty task list
- * Returns array of {level:'warn'|'err'|'ok', text}
- */
+
+   
 function runValidation(tasks, capacity) {
   const issues = [];
   const pending = tasks.filter(t => !t.completed);
@@ -756,25 +637,22 @@ function runValidation(tasks, capacity) {
     return issues;
   }
 
-  // Past deadlines
+   
   const overdue = pending.filter(t => new Date(t.deadline) <= now);
   overdue.forEach(t => issues.push({
     level:'err',
     text:`"${t.name}" deadline has passed — will be excluded from scheduling.`
   }));
 
-  // Tasks larger than daily capacity (will be split across days)
   const oversized = pending.filter(t => t.hours > capacity && new Date(t.deadline) > now);
   oversized.forEach(t => issues.push({
     level:'warn',
     text:`"${t.name}" (${t.hours}h) exceeds daily capacity (${capacity}h) — will be split across multiple days.`
   }));
 
-  // Total hours vs available days
   const schedulable = pending.filter(t => new Date(t.deadline) > now);
   const totalRequired = schedulable.reduce((s,t) => s+t.hours, 0);
   
-  // Estimate available days as min days-to-deadline across all tasks
   if (schedulable.length > 0) {
     const minDays = Math.min(...schedulable.map(t => Math.max(1, Math.ceil(daysUntil(t.deadline)))));
     const totalCapacity = minDays * capacity;
@@ -793,16 +671,9 @@ function runValidation(tasks, capacity) {
   return issues;
 }
 
-// ─── Schedule Metrics ─────────────────────────────────────────────────────────
 
-/**
- * Compute metrics for any schedule output.
- * MEASURABLE_OBJECTIVES:
- * - stdDev < 2.0h (load balance target)
- * - completeness > 90% (scheduling coverage)
- * - violationPct < 5% (deadline adherence)
- * Time complexity: O(d*a) where d=days, a=allocations per day
- */
+
+   
 function computeMetrics(days, tasks, capacity) {
   if (!days || days.length === 0) {
     return { stdDev:0, completeness:0, violationPct:0, peakDay:0, totalScheduled:0, totalRequired:0 };
@@ -842,12 +713,9 @@ function computeMetrics(days, tasks, capacity) {
   };
 }
 
-// ─── Schedule Builder (shared infrastructure) ─────────────────────────────────
 
-/**
- * Build the day-keyed capacity map for the scheduling window.
- * Returns array of date strings from today through maxDaysAhead.
- */
+
+   
 function buildDayWindow(tasks, capacity) {
   const now = new Date(); now.setHours(0,0,0,0);
   const pending = tasks.filter(t => !t.completed && new Date(t.deadline) > new Date());
@@ -861,14 +729,7 @@ function buildDayWindow(tasks, capacity) {
   return days;
 }
 
-/**
- * Core allocator: given an ordered task list, fill days sequentially.
- * Each day holds up to `capacity` hours. Tasks split across days if needed.
- * Deadline enforced: no allocation for a task on/after its deadline day.
- * 
- * Time complexity: O(n * d) where n=tasks, d=days in window
- * Space complexity: O(d * a) where a=average allocations per day
- */
+
 function allocate(orderedTasks, dayKeys, capacity) {
   const dayMap = {};
   dayKeys.forEach(dk => { dayMap[dk] = { date: dk, allocations: [], total: 0 }; });
@@ -877,7 +738,7 @@ function allocate(orderedTasks, dayKeys, capacity) {
     let remaining = task.hours;
     for (const dk of dayKeys) {
       if (remaining <= 1e-9) break;
-      // Don't schedule past task deadline
+       
       if (dk >= task.deadline.split('T')[0]) break;
       const avail = capacity - dayMap[dk].total;
       if (avail <= 1e-9) continue;
@@ -886,20 +747,13 @@ function allocate(orderedTasks, dayKeys, capacity) {
       dayMap[dk].total += alloc;
       remaining -= alloc;
     }
-    // remaining > 0 means task couldn't be fully scheduled (flagged via metrics)
   });
 
   return Object.values(dayMap).filter(d => d.allocations.length > 0);
 }
 
-// ─── Algorithm 1: FIFO (Baseline) ─────────────────────────────────────────────
 
-/**
- * FIFO: Sort by earliest deadline, fill days sequentially.
- * Rationale: Simplest possible scheduler, used as lower bound baseline.
- * Time complexity: O(n log n) sort + O(n*d) allocation
- * No optimization applied.
- */
+   
 function scheduleFireFIFO(tasks, capacity) {
   const pending = tasks.filter(t => !t.completed && new Date(t.deadline) > new Date());
   const ordered = [...pending].sort((a,b) => new Date(a.deadline) - new Date(b.deadline));
@@ -907,15 +761,8 @@ function scheduleFireFIFO(tasks, capacity) {
   return allocate(ordered, days, capacity);
 }
 
-// ─── Algorithm 2: Random (Baseline) ───────────────────────────────────────────
 
-/**
- * RANDOM: Shuffle task order, then allocate (with deadline enforcement).
- * Rationale: Lower bound baseline showing what happens without prioritization.
- * Uses seeded PRNG when STATE.settings.seed=true for reproducibility.
- * Time complexity: O(n) shuffle + O(n*d) allocation
- * NON_FUNCTIONAL_REQUIREMENTS: Must be deterministic when seeded.
- */
+   
 function scheduleRandom(tasks, capacity) {
   const pending = tasks.filter(t => !t.completed && new Date(t.deadline) > new Date());
   const rng = STATE.settings.seed ? makeRNG(42) : makeRNG(Date.now() & 0xffffffff);
@@ -924,19 +771,8 @@ function scheduleRandom(tasks, capacity) {
   return allocate(ordered, days, capacity);
 }
 
-// ─── Algorithm 3: Greedy ──────────────────────────────────────────────────────
 
-/**
- * GREEDY: Sort tasks by urgency score descending, allocate to earliest 
- * available days that fall before each task's deadline.
- * 
- * DESIGN_JUSTIFICATION: Greedy by urgency is optimal for single-machine
- * scheduling to minimize weighted lateness (a known result in scheduling theory).
- * The urgency score combines priority (importance) and difficulty (effort) 
- * against remaining time, ensuring critical tasks are always front-loaded.
- * 
- * Time complexity: O(n log n) sort + O(n*d) allocation
- */
+   
 function scheduleGreedy(tasks, capacity) {
   const pending = tasks.filter(t => !t.completed && new Date(t.deadline) > new Date());
   const ordered = [...pending].sort((a,b) => urgencyScore(b) - urgencyScore(a));
@@ -944,31 +780,9 @@ function scheduleGreedy(tasks, capacity) {
   return allocate(ordered, days, capacity);
 }
 
-// ─── Algorithm 4: Heuristic Optimizer ────────────────────────────────────────
 
-/**
- * HEURISTIC: Start from Greedy schedule, then perform k swap iterations
- * to minimize standard deviation of daily study hours.
- * 
- * DESIGN_JUSTIFICATION: 
- * - Greedy is fast but can create uneven daily loads
- * - Swap heuristic is a local search that finds neighboring solutions
- *   by swapping single allocation chunks between days
- * - Accepts a swap only if it strictly reduces std dev (hill-climbing)
- * - k=500 default: empirically 95% of improvement happens in first 200 iters
- *   (diminishing returns verified on test datasets)
- * - This is a greedy local search, not simulated annealing, chosen for
- *   simplicity and determinism (no temperature schedule needed)
- * 
- * NON_FUNCTIONAL_REQUIREMENTS: Must complete < 1000ms for 50 tasks.
- * Measured via performance.now() in the comparison runner.
- * 
- * Time complexity: O(n log n) initial sort + O(k * d²) swaps
- * where k=iterations, d=days in window
- * Space complexity: O(d * a) for the schedule copy
- */
+   
 function scheduleHeuristic(tasks, capacity, iters=500) {
-  // Start from Greedy schedule
   let days = scheduleGreedy(tasks, capacity);
   if (days.length < 2) return days;
 
@@ -978,7 +792,6 @@ function scheduleHeuristic(tasks, capacity, iters=500) {
     return Math.sqrt(totals.reduce((s,h) => s + (h-mean)**2, 0) / totals.length);
   }
 
-  // Deep clone to avoid mutating original
   function cloneDays(ds) {
     return ds.map(d => ({
       ...d,
@@ -990,7 +803,6 @@ function scheduleHeuristic(tasks, capacity, iters=500) {
   let currentSD = stdDev(current);
 
   for (let iter = 0; iter < iters; iter++) {
-    // Pick two different days at random
     if (current.length < 2) break;
     const i = Math.floor(Math.random() * current.length);
     let j = Math.floor(Math.random() * (current.length - 1));
@@ -999,13 +811,11 @@ function scheduleHeuristic(tasks, capacity, iters=500) {
     const dayA = current[i], dayB = current[j];
     if (dayA.allocations.length === 0 || dayB.allocations.length === 0) continue;
 
-    // Pick a random allocation from each day
     const ai = Math.floor(Math.random() * dayA.allocations.length);
     const bi = Math.floor(Math.random() * dayB.allocations.length);
     const allocA = dayA.allocations[ai];
     const allocB = dayB.allocations[bi];
 
-    // Check that swapping doesn't violate deadlines
     const taskA = tasks.find(t => t.id === allocA.taskId);
     const taskB = tasks.find(t => t.id === allocB.taskId);
     if (!taskA || !taskB) continue;
@@ -1013,25 +823,18 @@ function scheduleHeuristic(tasks, capacity, iters=500) {
     const deadlineA = taskA.deadline.split('T')[0];
     const deadlineB = taskB.deadline.split('T')[0];
 
-    // Task A would move to dayB's date — check deadline
     if (dayB.date >= deadlineA) continue;
-    // Task B would move to dayA's date — check deadline  
     if (dayA.date >= deadlineB) continue;
 
-    // Check capacity constraints after swap
-    // After swap: dayA loses allocA.hours, gains allocB.hours
-    //             dayB loses allocB.hours, gains allocA.hours
     const newTotalA = dayA.total - allocA.hours + allocB.hours;
     const newTotalB = dayB.total - allocB.hours + allocA.hours;
     if (newTotalA > capacity + 1e-9 || newTotalB > capacity + 1e-9) continue;
 
-    // Trial: perform swap on a clone
     const trial = cloneDays(current);
     const tA = trial[i], tB = trial[j];
     const tAllocA = tA.allocations[ai];
     const tAllocB = tB.allocations[bi];
 
-    // Swap task references and hours (partial swaps keep hours same)
     [tA.allocations[ai], tB.allocations[bi]] = [
       { ...tAllocB },
       { ...tAllocA }
@@ -1041,7 +844,6 @@ function scheduleHeuristic(tasks, capacity, iters=500) {
 
     const trialSD = stdDev(trial);
     if (trialSD < currentSD - 1e-9) {
-      // Accept improvement
       current = trial;
       currentSD = trialSD;
     }
@@ -1050,7 +852,6 @@ function scheduleHeuristic(tasks, capacity, iters=500) {
   return current;
 }
 
-// ─── Run Algorithms ───────────────────────────────────────────────────────────
 
 function runAlgorithm(algo) {
   const { capacity, iters, heuristic } = STATE.settings;
@@ -1063,7 +864,6 @@ function runAlgorithm(algo) {
   }
 }
 
-// ─── Render: Task List ────────────────────────────────────────────────────────
 
 function renderTasks() {
   const list = $('task-list');
@@ -1131,7 +931,6 @@ function renderTasks() {
 
 function escHtml(s) { return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-// ─── Render: Validation Panel ─────────────────────────────────────────────────
 
 function renderValidation() {
   const issues = runValidation(STATE.tasks, STATE.settings.capacity);
@@ -1142,13 +941,11 @@ function renderValidation() {
     </div>`).join('');
 }
 
-// ─── Render: Schedule View ────────────────────────────────────────────────────
 
 function renderScheduleView() {
   const days = STATE.currentSchedule;
   const metrics = computeMetrics(days, STATE.tasks, STATE.settings.capacity);
 
-  // Metrics cards
   const mc = $('schedule-metrics');
   mc.innerHTML = [
     { val: metrics.stdDev + 'h', label: 'Std Dev of Daily Load', target: '< 2.0h', pass: metrics.stdDev < 2.0 },
@@ -1164,10 +961,8 @@ function renderScheduleView() {
       </div>
     </div>`).join('');
 
-  // Objectives panel
   renderObjectives(metrics);
 
-  // Day cards
   const container = $('schedule-days');
   if (!days || days.length === 0) {
     container.innerHTML = `<div class="empty"><div class="empty-icon">📅</div><p>No schedule generated yet.<br>Click <strong>Run Schedule</strong> above.</p></div>`;
@@ -1209,16 +1004,7 @@ function toggleDay(idx) {
   body.classList.toggle('open');
 }
 
-// ─── MEASURABLE_OBJECTIVES Render ─────────────────────────────────────────────
 
-/**
- * MEASURABLE_OBJECTIVES:
- * These are the quantified success criteria for the dissertation:
- * 1. Std Dev < 2.0h: Ensures workload is distributed evenly (cognitive load theory)
- * 2. Completeness > 90%: At least 90% of task hours are scheduled
- * 3. Deadline violations < 5%: Tasks are mostly scheduled before deadlines
- * 4. Heuristic must improve on Greedy std dev (demonstrable optimization benefit)
- */
 function renderObjectives(metrics) {
   const greedyDays = scheduleGreedy(STATE.tasks, STATE.settings.capacity);
   const greedyMetrics = computeMetrics(greedyDays, STATE.tasks, STATE.settings.capacity);
@@ -1240,7 +1026,6 @@ function renderObjectives(metrics) {
     </div>`).join('');
 }
 
-// ─── Render: Comparison Table ─────────────────────────────────────────────────
 
 function renderCompare(results) {
   if (!results) return;
@@ -1248,7 +1033,7 @@ function renderCompare(results) {
   const algos = ['fifo','random','greedy','heuristic'];
   const labels = { fifo:'FIFO (Baseline)', random:'Random (Baseline)', greedy:'Greedy', heuristic:'Heuristic' };
 
-  // Find best values for highlighting
+   
   const sds   = algos.map(a => results[a].metrics.stdDev);
   const comps  = algos.map(a => results[a].metrics.completeness);
   const viols  = algos.map(a => results[a].metrics.violationPct);
@@ -1274,7 +1059,6 @@ function renderCompare(results) {
     </tr>`;
   }).join('');
 
-  // Analysis summary
   const best = algos[sds.indexOf(minSD)];
   $('perf-analysis').innerHTML = `
     <div style="font-size:.82rem;line-height:1.7">
@@ -1290,7 +1074,6 @@ function renderCompare(results) {
   $('perf-analysis').style.display = 'block';
 }
 
-// ─── Generate Report ──────────────────────────────────────────────────────────
 
 function generateReport() {
   const now = new Date().toLocaleString('en-GB');
@@ -1373,7 +1156,6 @@ function generateReport() {
   return lines.join('\n');
 }
 
-// ─── Task CRUD ────────────────────────────────────────────────────────────────
 
 function validateForm() {
   let ok = true;
@@ -1465,19 +1247,7 @@ function resetForm() {
   ['err-name','err-deadline','err-hours'].forEach(id => $(id).textContent = '');
 }
 
-// ─── Sample Data ──────────────────────────────────────────────────────────────
 
-/**
- * TESTING_STRATEGY: 8 sample tasks designed to exercise all edge cases:
- * - Task 1: High priority, urgent (2 days) → high urgency score
- * - Task 2: Medium priority, medium timeline (5 days)
- * - Task 3: Large task (10h) exceeding daily cap of 6h → must split
- * - Task 4: Low priority, distant deadline → low urgency
- * - Task 5: Critical priority with medium effort
- * - Task 6: Already overdue → should be excluded by algorithms
- * - Task 7: Medium difficulty, approaching deadline
- * - Task 8: Completed task → should not appear in schedule
- */
 function loadSamples() {
   if (STATE.tasks.length > 0 && !confirm('Replace existing tasks with 8 sample tasks?')) return;
 
@@ -1503,7 +1273,6 @@ function loadSamples() {
   alert('8 sample tasks loaded!\n\nNote: "Operating Systems Past Papers" is overdue (excluded from scheduling)\n"Machine Learning Coursework" (10h) exceeds daily capacity and will be split.');
 }
 
-// ─── Settings Sync ────────────────────────────────────────────────────────────
 
 function syncSettings() {
   STATE.settings.capacity = parseFloat($('s-capacity').value);
@@ -1524,7 +1293,6 @@ function applySettings() {
   $('s-iters-val').textContent = STATE.settings.iters;
 }
 
-// ─── View Switching ───────────────────────────────────────────────────────────
 
 function switchView(view) {
   ['tasks','schedule','compare'].forEach(v => {
@@ -1537,7 +1305,6 @@ function switchView(view) {
   if (view === 'compare') renderCompare(STATE.compareResults);
 }
 
-// ─── Event Wiring ─────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
   load();
@@ -1545,17 +1312,14 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTasks();
   renderValidation();
 
-  // Tabs
   $$('.tab-btn').forEach(btn => btn.addEventListener('click', () => switchView(btn.dataset.view)));
 
-  // Form
   $('btn-save').addEventListener('click', saveTask);
   $('btn-cancel').addEventListener('click', () => { STATE.editId = null; resetForm(); });
   $('btn-clear-all').addEventListener('click', () => {
     if (confirm('Delete ALL tasks?')) { STATE.tasks = []; save(); renderTasks(); STATE.currentSchedule = null; }
   });
 
-  // Range labels
   ['f-priority','f-difficulty'].forEach(id => {
     $(id).addEventListener('input', () => $(`${id}-val`).textContent = $(id).value);
   });
@@ -1569,7 +1333,6 @@ document.addEventListener('DOMContentLoaded', () => {
     $(id).addEventListener('input', renderTasks);
   });
 
-  // Schedule view
   $('btn-run-schedule').addEventListener('click', () => {
     STATE.currentSchedule = runAlgorithm(STATE.currentAlgo);
     renderScheduleView();
@@ -1585,7 +1348,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Compare
   $('btn-compare').addEventListener('click', () => {
     const algos = ['fifo','random','greedy','heuristic'];
     const results = {};
@@ -1641,13 +1403,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   $('btn-load-samples').addEventListener('click', loadSamples);
 
-  // Enter key in form fields
   ['f-name','f-deadline','f-hours'].forEach(id => {
     $(id).addEventListener('keydown', e => { if (e.key === 'Enter') saveTask(); });
   });
 });
 
-// ─── Mobile sidebar helpers ───────────────────────────────────────────────────
 function openSidebar() {
   $('sidebar').classList.add('mobile-open');
   $('sidebar-backdrop').classList.add('visible');
@@ -1658,14 +1418,12 @@ function closeSidebar() {
   $('sidebar-backdrop').classList.remove('visible');
   document.body.style.overflow = '';
 }
-// Close sidebar when switching views on mobile (tab click)
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       if (window.innerWidth <= 640) closeSidebar();
     });
   });
-  // Close on escape key
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeSidebar();
   });
