@@ -1219,7 +1219,8 @@ function editTask(id) {
   $('form-title').textContent = 'Edit Task';
   $('btn-cancel').style.display = '';
   $('f-name').focus();
-  openSidebar();
+  if (window.innerWidth <= 640) {
+  openSidebar();}
 }
 
 function deleteTask(id) {
